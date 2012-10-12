@@ -16,7 +16,6 @@ $(document).bind("pagebeforeshow", function (event, data) {
 
 	if (!sessionStorage.getItem("LoggedInUser")) {
 		if (!localStorage.getItem("LoggedInUser")) {
-			pageVars.returnAfterLogin = data;
 			event.preventDefault();
 			$.mobile.changePage("form.html");
 		}

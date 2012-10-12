@@ -17,11 +17,12 @@
         {
             data = jQuery.parseJSON(data);
             if (data.status == 'success') {
-				window.sessionStorage.setItem('LoggedInUser', data.username);
+				$("#notification").text(data.username);
+				window.localStorage.setItem('LoggedInUser', data.username);
 				$.mobile.changePage("main.html");	
 			}
 			else {
-				window.sessionStorage.setItem('LoggedInUser', '');
+				window.localStorage.setItem('LoggedInUser', '');
 				$("#notification").text("Log in Failed.");
 			}
         }

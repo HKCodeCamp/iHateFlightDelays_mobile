@@ -18,7 +18,7 @@
             data = jQuery.parseJSON(data);
             if (data.status == 'success') {
 				window.sessionStorage.setItem('LoggedInUser', data.username);
-				$.mobile.changePage("index.html");	
+				$.mobile.changePage("main.html");	
 			}
 			else {
 				window.sessionStorage.setItem('LoggedInUser', '');

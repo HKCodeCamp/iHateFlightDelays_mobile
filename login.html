@@ -15,8 +15,15 @@
     <script>
         function onSuccess(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text(data);
+            data = jQuery.parseJSON(data);
+            if (data.status == 'success') {
+				window.sessionStorage.setItem('LoggedInUser', data.username);
+				$.mobile.changePage("index.html");	
+			}
+			else {
+				window.sessionStorage.setItem('LoggedInUser', '');
+				$("#notification").text("Log in Failed.");
+			}
         }
   
         function onError(data, status)
@@ -27,11 +34,11 @@
         $(document).ready(function() {
             $("#submit").click(function(){
   
-                var formData = $("#callAjaxForm").serialize();
+                var formData = $("#LoginForm").serialize();
   
                 $.ajax({
                     type: "POST",
-                    url: "http://ihateflightdelays.co.cc/app/callajax.php",
+                    url: "http://ihateflightdelays.co.cc/app/login.php",
                     cache: false,
                     data: formData,
                     success: onSuccess,
@@ -59,14 +66,14 @@ THIS IS HEADER
 
 <h1>Please Log In</h1>
         
-<form id="callAjaxForm">
+<form id="LoginForm">
     <div data-role="fieldcontain">
-        <label for="firstName">Username</label>
+        <label for="username">Username</label>
         <input type="text" name="username" id="username" value=""  />
 		<br />
-        <label for="lastName">Password</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password" value=""  />
-
+		<h3 id="notification"></h3>
         <button data-theme="b" id="submit" type="submit">Submit</button>
     </div>
 </form>

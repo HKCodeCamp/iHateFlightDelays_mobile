@@ -18,11 +18,9 @@ $(document).bind("pagebeforeshow", function (event, data) {
 		if (!localStorage.getItem("LoggedInUser")) {
 			pageVars.returnAfterLogin = data;
 			event.preventDefault();
-			$.mobile.changePage("form.html", { changeHash: false });
+			$.mobile.changePage("form.html");
 		}
-//		else {
-//			sessionStorage.setItem('TokenSSKey', localStorage.getItem("TokenLSKey"));
-//		}
+
 	}
 
 });

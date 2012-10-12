@@ -17,9 +17,8 @@ $(document).bind("pagebeforeshow", function (event, data) {
 	if (!sessionStorage.getItem("LoggedInUser")) {
 		if (!localStorage.getItem("LoggedInUser")) {
 			event.preventDefault();
-			$.mobile.changePage("form.html");
+			$.mobile.changePage("login.html");
 		}
-
 	}
 
 });

@@ -16,6 +16,7 @@
         function onSuccess(data, status)
         {
             data = jQuery.parseJSON(data);
+			alert (data);
             if (data.status == 'success') {
 				$("#notification").text(data.username);
 				window.localStorage.setItem('LoggedInUser', data.username);

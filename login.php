@@ -6,6 +6,6 @@ $item = array();
 $item['username'] = $username;
 $item['status'] = 'success';
 
-echo json_encode($item);	
+echo '{"item":'. json_encode($item) .'}'; 
 	
 ?>

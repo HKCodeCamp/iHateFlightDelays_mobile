@@ -36,6 +36,8 @@
   
         $(document).ready(function() {
             $("#submit").click(function(){
+				
+				alert ("here");
   
                 var formData = $("#LoginForm").serialize();
   
@@ -43,7 +45,7 @@
                     type: "POST",
                     url: "http://ihateflightdelays.co.cc/app/php/loginss.php",
                     cache: false,
-                    data: json,
+                    data: formData,
                     success: onSuccess,
                     error: onError
                 });

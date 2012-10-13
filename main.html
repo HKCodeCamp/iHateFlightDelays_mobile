@@ -16,14 +16,22 @@
 	
 $(document).bind("pagebeforeshow", function (event, data) {
 
-	if (!sessionStorage.getItem("LoggedInUser")) {
-		if (!localStorage.getItem("LoggedInUser")) {
+	if (!localStorage.getItem("LoggedInUser")) {
 			event.preventDefault();
 			$.mobile.changePage("login.html");
-		}
+	}
+	else {
+			if (!localStorage.getItem("CheckedInFlight")) {
+				event.preventDefault();
+				$.mobile.changePage("checkin.html");
+			}
+			else {
+				$.mobile.changePage("main.html");				
+			}
 	}
 
 });
+	
 	
 	
     </script>

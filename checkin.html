@@ -12,11 +12,32 @@
 
 </head>
 <body>
-    <script>
+ <script>
+	
+	$(document).bind("pagebeforeshow", function (event, data) {
+	
+		if (!localStorage.getItem("LoggedInUser")) {
+				event.preventDefault();
+				$.mobile.changePage("login.html");
+		}
+	
+	});
+		
+	
         function onSuccess(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text(data);
+            dataj = jQuery.parseJSON(data);
+			user_name = dataj.item.username;
+			alert (user_name);
+            if (dataj.item.status == 'success') {
+				$("#notification").text(user_name);
+				window.localStorage.setItem('LoggedInUser', user_name);
+				$.mobile.changePage("main.html");	
+			}
+			else {
+				window.localStorage.setItem('LoggedInUser', '');
+				$("#notification").text("Log in Failed.");
+			}
         }
   
         function onError(data, status)
@@ -25,13 +46,13 @@
         }        
   
         $(document).ready(function() {
-            $("#submit").click(function(){
+            $("#submit").click(function() {
   
-                var formData = $("#callAjaxForm").serialize();
+                var formData = $("#RegisterForm").serialize();
   
                 $.ajax({
                     type: "POST",
-                    url: "http://ihateflightdelays.co.cc/app/callajax.php",
+                    url: "http://i-hate-flight-delays.herokuapp.com/account/checkin",
                     cache: false,
                     data: formData,
                     success: onSuccess,
@@ -41,7 +62,8 @@
                 return false;
             });
         });
-    </script>
+
+</script>
 
 <!-- ################################### BEGIN MAIN PAGE ######################################## -->
 
@@ -58,10 +80,11 @@ I Hate Flight Delays <br>
 <!-- BEGIN CONTENT -->
 <div data-role="content">
 
-<form id="callAjaxForm">
-    <div data-role="fieldcontain">
-        <label for="flightNumber">Flight number (eg PX 1234)</label>
-        <input type="text" name="flightNumber" id="flightNumber" value=""  />
+<div id="input" data-role="fieldcontain">
+<form id="checkinForm">
+
+        <label for="flight_number">Flight number (eg CA583)</label>
+        <input type="text" name="flight_number" id="flight_number" value=""  />
 		<br />
 		<!--
 		<p>Or:</p>
@@ -73,15 +96,19 @@ I Hate Flight Delays <br>
         /-->
         <h3 id="notification"></h3>
         <button data-theme="b" id="submit" type="submit">Submit</button>
-    </div>
 </form>
+</div>
 
+
+<div id="flight_info">
+</div>
+    
 </div>
 <!-- END CONTENT -->
 
 <!-- BEGIN FOOTER -->
 <div data-role="footer" data-position="fixed" style="height: 50px; vertical-align:middle">
-Specify flight number
+
 <!-- END FOOTER -->
 
 </div>

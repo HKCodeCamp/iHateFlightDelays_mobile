@@ -20,7 +20,13 @@ $(document).bind("pagebeforeshow", function (event, data) {
 			$.mobile.changePage("login.html");
 	}
 	else {
-			$.mobile.changePage("main.html");		
+			if (!localStorage.getItem("CheckedInFlight")) {
+				event.preventDefault();
+				$.mobile.changePage("checkin.html");
+			}
+			else {
+				$.mobile.changePage("main.html");				
+			}
 	}
 
 });

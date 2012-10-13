@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Test PhoneGap</title>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<link rel="stylesheet" href="css/jquery.mobile-1.2.0.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/jquery.mobile-1.2.0.min.js"></script>
+<script src="js/cordova-2.1.0.js"></script>
+
+</head>
+<body>
+    <script>
+        function onSuccess(data, status)
+        {
+            data = $.trim(data);
+            $("#notification").text(data);
+        }
+  
+        function onError(data, status)
+        {
+            // handle an error
+        }        
+  
+        $(document).ready(function() {
+            $("#submit").click(function(){
+  
+                var formData = $("#callAjaxForm").serialize();
+  
+                $.ajax({
+                    type: "POST",
+                    url: "http://ihateflightdelays.co.cc/app/callajax.php",
+                    cache: false,
+                    data: formData,
+                    success: onSuccess,
+                    error: onError
+                });
+  
+                return false;
+            });
+        });
+    </script>
+
+<!-- ################################### BEGIN MAIN PAGE ######################################## -->
+
+<div data-role="page" id="list_page" data-theme="c">
+
+<!-- BEGIN HEADER -->
+<div id="header" data-role="header" data-position="fixed" data-theme="c">
+I Hate Flight Delays <br>
+<h1>Check in your flight</h1>
+</div>
+<!-- END HEADER -->
+
+
+<!-- BEGIN CONTENT -->
+<div data-role="content">
+
+<form id="callAjaxForm">
+    <div data-role="fieldcontain">
+        <label for="flightNumber">Flight number (eg PX 1234)</label>
+        <input type="text" name="flightNumber" id="flightNumber" value=""  />
+		<br />
+		<!--
+		<p>Or:</p>
+        <label for="From Airport">From airport</label>
+        <input type="text" name="fromAirport" id="fromAirport" value=""  />
+		<br />
+        <label for="To Airport">To airport</label>
+        <input type="text" name="toAirport" id="toAirport" value=""  />
+        /-->
+        <h3 id="notification"></h3>
+        <button data-theme="b" id="submit" type="submit">Submit</button>
+    </div>
+</form>
+
+</div>
+<!-- END CONTENT -->
+
+<!-- BEGIN FOOTER -->
+<div data-role="footer" data-position="fixed" style="height: 50px; vertical-align:middle">
+Specify flight number
+<!-- END FOOTER -->
+
+</div>
+
+<!-- ##################################### END MAIN PAGE ######################################### -->
+
+
+
+
+
+</body>
+</html>

@@ -50,21 +50,26 @@
 <!-- BEGIN HEADER -->
 <div id="header" data-role="header" data-position="fixed" data-theme="c">
 I Hate Flight Delays <br>
-<h1>Complaint form for CX 1234</h1>
+<h1>Historical data for flight ABC 1234</h1>
 </div>
 <!-- END HEADER -->
+
 
 <!-- BEGIN CONTENT -->
 <div data-role="content">
 
 <form id="callAjaxForm">
-    <div data-role="fieldcontain">
-	<label for="textarea">Please describe the problem to me:</label>
-	<br /> <br />
-	<textarea cols="40" rows="8" style="height: 200px;" name="problemText" id="problemText"></textarea>
-	<br />
-        <h3 id="notification"></h3>
-        <button data-theme="b" id="submit" type="submit">Submit</button>
+	<div data-role="content">
+     <h2 style="padding: 0.1em 0;">This flight has had these complaints in the past:</h2>
+ 
+    <ul data-role="listview" data-inset="true">
+      <li>Complaint 1:  people shitting on the plane</li>
+      <li>Complaint 2:  delayed for 4 hours</li>
+      <li>Complaint 3:  stuck in airplane for 3 hours</li>
+      <li>Complaint 4:  rude stewardess</li>
+    </ul>
+	
+		<br />
     </div>
 </form>
 

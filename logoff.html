@@ -12,9 +12,13 @@
 <script src="js/cordova-2.1.0.js"></script>
 <script src="js/function.js"></script>
 
+
+</head>
+<body>
+
 <script type="text/javascript">
 	
-$(document).bind("pagebeforeshow", function (event, data) {
+$(document).ready(function() {
 
 	alert("Bye Bye!");
 	window.localStorage.setItem('LoggedInUser', '');
@@ -23,13 +27,7 @@ $(document).bind("pagebeforeshow", function (event, data) {
 	
 });
 	
-
-	
-    </script>
-</head>
-<body>
-
-
+</script>
 
 </body>
 </html>

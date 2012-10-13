@@ -17,7 +17,7 @@
         {
             data = jQuery.parseJSON(data);
 			alert (data.username);
-            if (data.item.status == 'success') {
+            if (data.status == 'success') {
 				$("#notification").text(data.username);
 				window.localStorage.setItem('LoggedInUser', data.username);
 				$.mobile.changePage("main.html");	

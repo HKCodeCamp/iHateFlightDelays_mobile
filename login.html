@@ -15,8 +15,8 @@
     <script>
         function onSuccess(data, status)
         {
-            data = jQuery.parseJSON(data);
-			user_name = data.item.username;
+            dataj = jQuery.parseJSON(data);
+			user_name = dataj.item.username;
 			alert (user_name);
             if (data.item.status == 'success') {
 				$("#notification").text(user_name);

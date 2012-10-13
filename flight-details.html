@@ -49,7 +49,8 @@
 
 <!-- BEGIN HEADER -->
 <div id="header" data-role="header" data-position="fixed" data-theme="c">
-THIS IS HEADER
+I Hate Flight Delays <br>
+<h1>Flight details for PX 1234</h1>
 </div>
 <!-- END HEADER -->
 
@@ -58,14 +59,22 @@ THIS IS HEADER
 <div data-role="content">
 
 <form id="callAjaxForm">
-    <div data-role="fieldcontain">
-        <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" value=""  />
+    <!-- <div data-role="fieldcontain"> /-->
+
+	<div data-role="content">
+     <h2 style="padding: 0.1em 0;">Flight details:</h2>
+ 
+    <ul data-role="listview" data-inset="true">
+      <li>Expected departure time</li>
+      <li>Expected arrival time</li>
+      <li>Origin</li>
+      <li>Destination</li>
+    </ul>
+	
 		<br />
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName" value=""  />
         <h3 id="notification"></h3>
-        <button data-theme="b" id="submit" type="submit">Submit</button>
+        <button data-theme="b" id="submit" type="submit">Complain</button>
+        <button data-theme="b" id="submit" type="submit">Socialize</button>
     </div>
 </form>
 

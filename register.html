@@ -15,8 +15,18 @@
     <script>
         function onSuccess(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text(data);
+            dataj = jQuery.parseJSON(data);
+			user_name = dataj.item.username;
+			alert (user_name);
+            if (dataj.item.status == 'success') {
+				$("#notification").text(user_name);
+				window.localStorage.setItem('LoggedInUser', user_name);
+				$.mobile.changePage("main.html");	
+			}
+			else {
+				window.localStorage.setItem('LoggedInUser', '');
+				$("#notification").text("Log in Failed.");
+			}
         }
   
         function onError(data, status)
@@ -31,7 +41,7 @@
   
                 $.ajax({
                     type: "POST",
-                    url: "http://ihateflightdelays.co.cc/app/callajax.php",
+                    url: "http://ihateflightdelays.co.cc/app/php/registeration.php",
                     cache: false,
                     data: formData,
                     success: onSuccess,
@@ -62,9 +72,15 @@ I Hate Flight Delays <br>
     <div data-role="fieldcontain">
         <label for="userName">User Name / Nick Name</label>
         <input type="text" name="userName" id="userName" value=""  />
+        
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value=""  />        
 
         <label for="password">Password</label>
-        <input type="text" name="password" id="password" value=""  />
+        <input type="password" name="password" id="password" value=""  />
+        
+        <label for="password1">Password (Repeat)</label>
+        <input type="password" name="password1" id="password1" value=""  />        
 		<br />
         <h3 id="notification"></h3>
         <button data-theme="b" id="submit" type="submit">Submit</button>

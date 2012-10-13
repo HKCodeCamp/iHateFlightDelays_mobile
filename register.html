@@ -38,7 +38,7 @@
         $(document).ready(function() {
             $("#submit").click(function() {
   
-                var formData = $("#callAjaxForm").serialize();
+                var formData = $("#RegisterForm").serialize();
   
                 $.ajax({
                     type: "POST",
@@ -71,7 +71,7 @@
 
 <h1>User Registration</h1>
 
-<form id="callAjaxForm">
+<form id="RegisterForm">
     <div data-role="fieldcontain">
         <label for="userName">User Name / Nick Name</label>
         <input type="text" name="username" id="username" value=""  />

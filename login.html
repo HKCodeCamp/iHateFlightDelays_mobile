@@ -42,14 +42,9 @@
   
                 var formData = $("#LoginForm").serialize();
 				
-				var rand = new Date().getTime(); 
-				
-				var url = "http://ihateflightdelays.co.cc/app/php/login.php?rand=" + rand;
-
-  
                 $.ajax({
                     type: "POST",
-                    url: url,
+                    url: 'http://ihateflightdelays.co.cc/app/php/login.php',
                     cache: false,
                     data: formData,
                     success: onSuccess,

@@ -1,4 +1,6 @@
 function logoff() {
+	alert("Bye!");
+	window.localStorage.setItem('LoggedInUser', '');
 	window.localStorage.removeItem('LoggedInUser');
-	$.mobile.changePage("index.html");
+	$.mobile.changePage("login.html");
 }

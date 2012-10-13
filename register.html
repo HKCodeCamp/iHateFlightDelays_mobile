@@ -18,7 +18,7 @@
         {
             dataj = jQuery.parseJSON(data);
 			user_name = dataj.item.username;
-			alert (user_name);
+			// alert (user_name);
             if (dataj.item.status == 'success') {
 				$("#notification").text(user_name);
 				window.localStorage.setItem('LoggedInUser', user_name);

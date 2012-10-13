@@ -36,11 +36,12 @@
         }        
   
         $(document).ready(function() {
+						
             $("#submit").click(function(){
 				
 				// alert ("here");
   
-                var formData = $("#LoginForm").serialize();
+                var formData = $("#Form").serialize();
 				
                 $.ajax({
                     type: "POST",
@@ -54,6 +55,7 @@
                 return false;
             });
         });
+		
     </script>
 
 <!-- ################################### BEGIN MAIN PAGE ######################################## -->
@@ -72,13 +74,14 @@
 
 <h1>Please Log In</h1>
         
-<form id="LoginForm">
+<form id="Form">
     <div data-role="fieldcontain">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" value=""  />
 		<br />
         <label for="password">Password</label>
         <input type="password" name="password" id="password" value=""  />
+        <br /><br />        
 		<!-- <h3 id="notification"></h3> -->
         <button data-theme="b" id="submit" type="submit">Submit</button>
         <br /><br />

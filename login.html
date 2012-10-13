@@ -16,10 +16,10 @@
         function onSuccess(data, status)
         {
             data = jQuery.parseJSON(data);
-			alert (data.item.username);
+			alert (data.username);
             if (data.item.status == 'success') {
-				$("#notification").text(data.item.username);
-				window.localStorage.setItem('LoggedInUser', data.item.username);
+				$("#notification").text(data.username);
+				window.localStorage.setItem('LoggedInUser', data.username);
 				$.mobile.changePage("main.html");	
 			}
 			else {
